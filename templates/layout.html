@@ -22,14 +22,9 @@
         <nav class="bg-light border navbar navbar-expand-md navbar-light">
             <div class="container-fluid">
                 {% if session["user"] %}
-                <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a href="/">
-                    <img src="static/LD_small_transp.png" width="194" height="75">
-                </a>
                 <div class="collapse navbar-collapse" id="navbar">
                         <ul class="navbar-nav me-auto mt-2">
+                            <li class="nav-item"><a class="nav-link" href="/">Overview</a></li>
                             <li class="nav-item"><a class="nav-link" href="/projects">Open projects</a></li>
                             <li class="nav-item"><a class="nav-link" href="/backlog">Backlog</a></li>
                             <li class="nav-item"><a class="nav-link" href="/purchases">Purchases</a></li>
