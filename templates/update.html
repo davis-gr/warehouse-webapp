@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Update Prices
+{% endblock %}
+
+{% block main %}
+<main class="container-fluid px-5">
+    <form action="/update" method="post">
+        <div class="form-group mb-3">
+            <label for="name">Select article name</label>
+            <select multiple class="form-control" name="name" id="name" onchange="showPrices()">
+                {% for name in articleNames %}
+                    <option onclick='showPrices()'>{{ name["name"] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3" id="paragraph" hidden>
+            <script> {% include 'scripts/updateprice.js' %} </script>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control w-auto" id="date" name="date" placeholder="Date" value={{ today }} type="text" required>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control w-auto" id="price" name="price" placeholder="Price per tonne" type="number" required>
+        </div>
+        <div class="form-actions mb-3">
+            <button class="btn btn-success w-auto" type="submit">Update</button>
+        </div>
+    </form>
+</main>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Invoicing
+{% endblock %}
+
+{% block main %}
+<main class="container py-3">
+    <form action="/invoicing" method="post">
+        <table class="table table-striped" id="table">
+            <thead>
+                <tr>
+                    <th class="text-start columns" name="project_num">Project number</th>
+                    <th class="text-start columns" name="article">Project article</th>
+                    <th class="text-start columns" name="planned_sheets">Planned sheets</th>
+                    <th class="text-start columns" name="written_off_sheets">Written off sheets</th>
+                    <th class="text-start columns" name="delta">Delta</th>
+                    <th class="text-start columns" name="invoicing">Invoiced?</th>
+                </tr>
+            </thead>
+        <tbody>
+                {% for project in projects %}
+                    <tr class="unit-table">
+                        <td class="text-start">{{ project["project_num"] }}</td>
+                        <td class="text-start">{{ project["article"] }}</td>
+                        <td class="text-start">{{ project["planned_sheets"] }}</td>
+                        <td class="text-start">{{ project["written_off_sheets"] }}</td>
+                        <td class="text-start">{{ project["delta"] }}</td>
+                        <td class="text-middle"><input class="form-check-input" type="checkbox" value="{{project["id"]}}" name="invoicing" id="invoicing"></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button id="submitButton" class="btn btn-success w-auto" type="submit">Submit</button>
+    </form>
+    <script src="/static/js/scripts.js" type="text/javascript"></script>
+</main>
+{% endblock %}

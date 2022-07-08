@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Overview
+{% endblock %}
+
+{% block main %}
+<main class="container-fluid py-3 text-center">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-start">Article</th>
+                <th class="text-end">Current stock</th>
+                <th class="text-end">GSM</th>
+                <th class="text-start">Name</th>
+                <th class="text-end">Size</th>
+                <th class="text-end">Size (fiber)</th>
+                <th class="text-end">Thickness</th>
+                <th class="text-end">Weight (kg/1000 sht)</th>
+                <th class="text-end">Pallet</th>
+                <th class="text-end">Price per tonne</th>
+                <th class="text-end">Price per 1000 sht</th>
+                <th class="text-end">Assortment stock (pll)</th>
+                <th class="text-end">Assortment stock (sht)</th>
+                <th class="text-end">Current stock value</th>
+            </tr>
+        </thead>
+       <tbody>
+            {% for article in articles %}
+                <tr>
+                    <td class="text-start">{{ article["article"] }}</td>
+                    <td class="text-end">{{ article["stock"] }}</td>
+                    <td class="text-end">{{ article["gsm"] }}</td>
+                    <td class="text-start">{{ article["name"] }}</td>
+                    <td class="text-end">{{ article["size"] }}</td>
+                    <td class="text-end">{{ article["size_fiber"] }}</td>
+                    <td class="text-end">{{ article["thickness"] | flt3 }}</td>
+                    <td class="text-end">{{ article["weight"] | flt1 }}</td>
+                    <td class="text-end">{{ article["pallet_amt"] }}</td>
+                    <td class="text-end">{{ article["price_per_tonne"] }}</td>
+                    <td class="text-end">{{ article["price_per_1000_sheets"] | flt2 }}</td>
+                    <td class="text-end">{{ article["assortment_stock_pll"] }}</td>
+                    <td class="text-end">{{ article["assortment_stock_sheets"] }}</td>
+                    <td class="text-end">{{ article["stock_value"] | flt0 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="border-0 fw-bold text-end" colspan="13">TOTAL</td>
+                <td class="border-0 w-bold text-end">{{ totalValue }}</td>
+            </tr>
+        </tfoot>
+    </table>
+</main>
+{% endblock %}

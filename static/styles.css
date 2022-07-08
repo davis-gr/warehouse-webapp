@@ -1,0 +1,109 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+.zeromargin
+{
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
+    font-size: small;
+    display: inline-block;
+ }
+
+ .form-actions {
+    margin: 0;
+    text-align: left
+}
+
+#addButton {
+    text-align: left!important;
+}
+
+.form-control {
+    display: inline-block;
+}
+
+.form-group {
+  display: inline-block;
+}
+
+/* CSS FOR AUTOCOMPLETE */ 
+  
+/*the container must be positioned relative:*/
+
+.autocomplete {
+    position: relative;
+    display: inline-block;
+  }
+  
+  input {
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  input[type=submit] {
+    background-color: DodgerBlue;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .autocomplete-items {
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+  
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff; 
+    border-bottom: 1px solid #d4d4d4; 
+  }
+  
+  /*when hovering an item:*/
+  .autocomplete-items div:hover {
+    background-color: #e9e9e9; 
+  }
+  
+  /*when navigating through the items using the arrow keys:*/
+  .autocomplete-active {
+    background-color: DodgerBlue !important; 
+    color: #ffffff; 
+  }
+
+/*conditional formatting for negative values*/
+.very-bold-text {
+    font-weight: bold;
+}
+
+.text-right {
+  text-align: right; 
+}

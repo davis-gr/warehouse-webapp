@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Purchase Receipts
+{% endblock %}
+
+{% block main %}
+<main class="container-fluid py-3">
+    <form action="" method="post">
+        <table class="table table-striped" id="table">
+            <thead>
+                <tr>
+                    <th class="text-start columns" name="order_date">Order date</th>
+                    <th class="text-start columns" name="article">Article</th>
+                    <th class="text-end columns" customattr="text-right" name="order_pll">Pallets</th>
+                    <th class="text-end columns" customattr="text-right" name="order_sheets">Sheets</th>
+                    <th class="text-start columns" name="height">Height (cm)</th>
+                    <th class="text-start columns" name="supplier">Supplier</th>
+                    <th class="text-start columns" name="eta_date">Receipt date</th>
+                    <th class="text-start columns" name="project">Order/Warehouse</th>
+                    <th class="text-end columns" customattr="text-right" name="weight">Weight</th>
+                    <th class="text-end columns" customattr="text-right" name="price">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr class="unit-table">
+                        <td class="text-start">{{ order[0]["order_date"] }}</td>
+                        <td class="text-start">{{ order[0]["article"] }}</td>
+                        <td class="text-end">{{ order[0]["order_pll"] }}</td>
+                        <td class="text-end">{{ order[0]["order_sheets"] }}</td>
+                        <td class="text-start"><input autocomplete="off" required class="form-control w-auto" id="act_height" name="act_height" type="number"></td>
+                        <td class="text-start">{{ order[0]["supplier"] }}</td>
+                        <td class="text-start">{{ today }}</td>
+                        <td class="text-start">{{ order[0]["project"] }}</td>
+                        <td class="text-end">{{ order[0]["weight"] }}</td>
+                        <td class="text-end">{{ order[0]["price"] }}</td>
+                    </tr>
+                    <script> var papers = {{ papers | tojson }}; </script>
+                    <script> {% include 'scripts/receiveorder.js' %} </script>
+                    <script src="/static/js/scripts.js" type="text/javascript"></script>
+            </tbody>
+        </table>
+        <button id="addButton" class="btn btn-warning w-auto" type="button" onclick="addRow('receive')">Modify Order</button>
+        <button id="submitButton" class="btn btn-success w-auto" name="action" value="original" type="submit">Order Received</button>
+    </form>
+</main>
+{% endblock %}

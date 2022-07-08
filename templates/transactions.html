@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transactions
+{% endblock %}
+
+{% block main %}
+<main class="container-fluid py-3 text-center">
+    <form action="/transactions" method="post">
+        <div class="mb-3">
+            <input autofocus autocomplete="off" class="form-control w-25" id="article" name="article" placeholder="Article" type="text">
+            <input autocomplete="off" class="form-control w-auto" id="date" name="date" placeholder="Transaction date" type="text">
+            <input autocomplete="off" class="form-control w-auto" id="trx_type" name="trx_type" placeholder="Transaction type" type="text">
+            <input autocomplete="off" class="form-control w-auto" id="supplier" name="supplier" placeholder="Supplier" type="text">
+            <input autocomplete="off" class="form-control w-auto" id="project" name="project" placeholder="Project" type="text">
+            <button class="btn btn-success" type="submit">Search</button>
+        </div>
+    </form>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-start">ID</th>
+                <th class="text-start">Article</th>
+                <th class="text-start">Transaction date</th>
+                <th class="text-start">Transaction type</th>
+                <th class="text-end">Pallets</th>
+                <th class="text-end">Sheets</th>
+                <th class="text-start">Supplier</th>
+                <th class="text-start">Project</th>
+                <th class="text-end">Weight</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Exp. height</th>
+                <th class="text-end">Act. height</th>
+                <th class="text-end">Deviation</th>
+            </tr>
+        </thead>
+       <tbody>
+            {% for trx in transactions %}
+                <tr class="tablerow">
+                    <td class="text-start">{{ trx["id"] }}</td>
+                    <td class="text-start">{{ trx["article"] }}</td>
+                    <td class="text-start">{{ trx["trx_date"] }}</td>
+                    <td class="text-start">{{ trx["trx_type"] }}</td>
+                    <td class="text-end">{{ trx["trx_pll"] }}</td>
+                    <td class="text-end">{{ trx["trx_sheets"] }}</td>
+                    <td class="text-start">{{ trx["supplier"] }}</td>
+                    <td class="text-start">{{ trx["project"] }}</td>
+                    <td class="text-end">{{ trx["weight"] }}</td>
+                    <td class="text-end">{{ trx["price"] }}</td>
+                    <td class="text-end">{{ trx["exp_height"] }}</td>
+                    <td class="text-end">{{ trx["act_height"] }}</td>
+                    <td class="text-end">{{ trx["deviation"]|string + '%' }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}

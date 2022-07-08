@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Purchase orders
+{% endblock %}
+
+{% block main %}
+<main class="container-fluid py-3">
+    <form action="" method="post">
+        <table class="table table-striped" id="table">
+            <thead>
+                <tr>
+                    <th class="text-start columns" name="order_date" value={{ today }}>Order date</th>
+                    <th class="text-start columns" name="article">Article</th>
+                    <th class="text-end columns" customattr="text-right" name="order_pll">Pallets</th>
+                    <th class="text-end columns" customattr="text-right" name="order_sheets">Sheets</th>
+                    <th class="text-start columns" name="supplier">Supplier</th>
+                    <th class="text-start columns" name="eta_date">ETA</th>
+                    <th class="text-start columns" name="project">Order/Warehouse</th>
+                    <th class="text-end columns" customattr="text-right" name="weight">Weight</th>
+                    <th class="text-end columns" customattr="text-right" name="price">Budget</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for purchase in purchases %}
+                    <tr class="unit-table">
+                        <td class="text-start">{{ purchase["order_date"] }}</td>
+                        <td class="text-start">{{ purchase["article"] }}</td>
+                        <td class="text-end">{{ purchase["order_pll"] }}</td>
+                        <td class="text-end">{{ purchase["order_sheets"] }}</td>
+                        <td class="text-start">{{ purchase["supplier"] }}</td>
+                        <td class="text-start">{{ purchase["eta_date"] }}</td>
+                        <td class="text-start">{{ purchase["project"] }}</td>
+                        <td class="text-end">{{ purchase["weight"] }}</td>
+                        <td class="text-end">{{ purchase["price"] }}</td>
+                        <td class="text-end"><button class="btn btn-primary btn-sm" name="action" value="{{ purchase["id"] }}" type="submit">Receive</button></td>
+                    </tr>
+                {% endfor %}
+                <script> var articleList = {{ articleList | tojson }}; </script>
+                <script> var supplierList = {{ supplierList | tojson }}; </script>
+                <script> var papers = {{ papers | tojson }}; </script>
+                <script> var projectList = {{ projectList | tojson }}; </script>
+                <script src="/static/js/scripts.js" type="text/javascript"></script>          
+            </tbody>
+        </table>
+        <button id="addButton" class="btn btn-primary w-auto" type="button" onclick="addRow('purchases')">Add Order</button>
+        <button id="submitButton" class="btn btn-success w-auto" type="submit" name="action" value="purchase" style="display: none;">Submit</button>
+    </form>
+    <script> isLinked() </script>
+</main>
+{% endblock %}

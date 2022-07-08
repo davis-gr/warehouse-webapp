@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Projects archive
+{% endblock %}
+
+{% block main %}
+<main class="container py-3">
+    <form action="/archive" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control w-auto" id="project" name="project" placeholder="Project number" type="text">
+            <input autofocus autocomplete="off" class="form-control w-25" id="article" name="article" placeholder="Project article" type="text">
+            <button class="btn btn-success" type="submit">Search</button>
+        </div>
+    </form>
+        <table class="table table-striped" id="table">
+            <thead>
+                <tr>
+                    <th class="text-start columns" name="project_num">Project number</th>
+                    <th class="text-start columns" name="article">Project article</th>
+                    <th class="text-end columns" name="planned_sheets">Planned sheets</th>
+                    <th class="text-end columns" name="act_sheets">Actual sheets</th>
+                    <th class="text-end columns" name="act_sheets">Delta</th>
+                </tr>
+            </thead>
+        <tbody>
+                {% for project in projects %}
+                    <tr class="unit-table">
+                        <td class="text-start">{{ project["project_num"] }}</td>
+                        <td class="text-start">{{ project["article"] }}</td>
+                        <td class="text-end">{{ project["planned_sheets"] }}</td>
+                        <td class="text-end">{{ project["writeoffs"] }}</td>
+                        <td class="text-end">{{ project["delta"] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</main>
+{% endblock %}

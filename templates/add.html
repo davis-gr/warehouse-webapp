@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Article
+{% endblock %}
+
+{% block main %}
+<main class="container-fluid px-5">
+    <form action="/add" method="post">
+        <div class="mb-3">
+            <input autofocus autocomplete="off" class="form-control w-auto" id="gsm" name="gsm" placeholder="GSM" type="number" required>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control w-auto" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control w-auto" id="size" name="size" placeholder="Size" type="number" required>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control w-auto" id="size_fiber" name="size_fiber" placeholder="Size (fiber)" type="number" required>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control w-auto" id="stock" name="stock" placeholder="Current stock" type="number" required>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control w-auto" id="thickness" name="thickness" placeholder="Thickness" type="text" oninput="this.value = this.value.replace(',', '.')" required>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control w-auto" id="pallet_amt" name="pallet_amt" placeholder="Pallet" type="number" required>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control w-auto" id="price_per_tonne" name="price_per_tonne" placeholder="Price per tonne" type="number" oninput="this.value = this.value.replace(',', '.')" required>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control w-auto" id="assortment_stock_pll" name="assortment_stock_pll" placeholder="Assortment stock (pallets)" type="number" oninput="this.value = this.value.replace(',', '.')" required>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="Y" name="fsc" id="fsc">
+            <label class="form-check-label mt-1" for="fsc">
+              FSC Paper
+            </label>
+          </div>
+        <div class="form-actions mt-3">
+            <button class="btn btn-success w-auto" type="submit">Add Article</button>
+        </div>
+    </form>
+</main>
+{% endblock %}

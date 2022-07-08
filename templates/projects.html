@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Projects overview
+{% endblock %}
+
+{% block main %}
+<main class="container py-3">
+    <form action="/projects" method="post">
+        <table class="table table-striped" id="table">
+            <thead>
+                <tr>
+                    <th class="text-start columns" customattr="w-auto" name="project_num">Project number</th>
+                    <th class="text-start columns" name="article">Order article</th>
+                    <th class="text-end columns" customattr="w-auto text-right" name="project_paper_sheets">Paper for project</th>
+                    <th class="text-start columns" name="article2">Project article</th>
+                    <th class="text-start columns" name="sizediff">Coefficient</th>
+                    <th class="text-start columns" name="status">Project status</th>
+                </tr>
+            </thead>
+        <tbody>
+                {% for project in projects %}
+                    <tr class="unit-table">
+                        <td class="text-start">{{ project["project_num"] }}</td>
+                        <td class="text-start">{{ project["article1"] }}</td>
+                        <td class="text-end">{{ project["project_paper_sheets"] }}</td>
+                        <td class="text-start">{{ project["article2"] }}</td>
+                        <td class="text-start">{{ project["size_diff"] }}</td>
+                        <td class="text-start">{{ project["project_status"] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button id="addButton" class="btn btn-primary w-auto" type="button" onclick="addRow('projects')">Add Project</button>
+        <button id="submitButton" class="btn btn-success w-auto" type="submit" style="display: none;">Submit</button>
+    </form>
+    <script> var articleList = {{ articleList | tojson }}; </script>
+    <script src="/static/js/scripts.js" type="text/javascript"></script>
+    
+</main>
+{% endblock %}
